@@ -25,8 +25,11 @@ class UISprite(Sprite):
             y = self.rect.y - rect.y
             surface.blit(self.image, (x, y))
 
-    def build_surface(self):
-        surface = Surface(self.rect.size, SRCALPHA)
+    def build_surface(self, rect=None):
+        if rect is None:
+            rect = self.rect
+
+        surface = Surface(rect.size, SRCALPHA)
         surface.fill((0, 0, 0, 0))
         return surface
 

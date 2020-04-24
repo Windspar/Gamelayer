@@ -7,15 +7,21 @@ class Renderer(Sprite):
         Sprite.__init__(self, *groups)
         self.tool = tool
         self.tool.set_apply_image(self.update_image)
+        self._apply_image = None
         self.normal_image = self.process_image(normal)
         self.hover_image = self.process_image(hover)
         self.toggle_image = self.process_image(toggle)
         self.build_image(self.normal_image)
 
+    def apply_image(self):
+        if self._apply_image:
+            self._apply_image(self)
+
     def build_image(self, base):
         self.image = base.copy()
         self.tool.blit(self.image, self.tool.rect)
         self.rect = self.tool.rect
+        self.apply_image()
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -37,3 +43,6 @@ class Renderer(Sprite):
             self.build_image(self.hover_image)
         else:
             self.build_image(self.normal_image)
+
+    def set_apply_image(self, callback):
+        self._apply_image = callback

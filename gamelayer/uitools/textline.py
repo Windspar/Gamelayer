@@ -12,7 +12,9 @@ class TextLine(UISprite):
         self._right = 0
         self._offset = 2
 
-        if allowed_keys is None:
+        if allowed_keys:
+            self.allowed_keys = allowed_keys
+        else:
             self.allowed_keys = string.digits + string.ascii_letters + string.punctuation + " "
 
         self.recall = Recall()

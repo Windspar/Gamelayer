@@ -21,11 +21,6 @@ class Label(UISprite):
         self._original_image = self.image
         self.apply_image()
 
-    def blit(self, surface, rect):
-        x = self.rect.x - rect.x
-        y = self.rect.y - rect.y
-        surface.blit(self.image, (x, y))
-
     def clip(self, rect):
         self.image = self._original_image.subsurface(rect)
         self.rect = self.image.get_rect(**{self._anchor: self._position})
