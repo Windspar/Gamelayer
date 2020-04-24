@@ -1,12 +1,16 @@
 from pygame import Rect
 
 class Grid:
-    def __init__(self, position, count, slice, gap=(0, 0)):
+    @classmethod
+    def init(cls):
+        return cls((0, 0), (1, 1), (1, 1))
+
+    def __init__(self, position, size, slice, gap=(0, 0)):
         self.slice = slice
+        self.size = size
         self.gap = gap
-        self.size = count
-        self.cut = self.calculate_cut()
-        self.rect = self.calculate_rect(position)
+        self.position = position
+        self.update()
 
     def calculate_cut(self):
         x = self.slice[0] + self.gap[0]
@@ -44,3 +48,7 @@ class Grid:
             if 0 <= y < sy:
                 return True
         return False
+
+    def update(self):
+        self.cut = self.calculate_cut()
+        self.rect = self.calculate_rect(self.position)
