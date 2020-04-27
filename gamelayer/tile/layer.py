@@ -3,9 +3,11 @@ from itertools import zip_longest
 class TileLayer:
     layers = ["ground", "object"]
 
-    def __init__(self, *args):
-        zip_data = zip_longest(TileLayer.layers, args, fillvalue=None)
+    def __init__(self, layers, collidable=False, rect=None):
+        zip_data = zip_longest(TileLayer.layers, layers, fillvalue=None)
         self.layer = dict([(key, image) for key, image in zip_data])
+        self.is_collidable = collidable
+        self.rect = rect
         self.image = None
 
     def blend(self):

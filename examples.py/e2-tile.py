@@ -42,7 +42,8 @@ class MainScene(game.Scene):
                     if random.randint(0, 15) == 1:
                         object_image = random.choice(list(object_images.values()))
 
-                layer = game.TileLayer(ground_image, object_image)
+                collidable = object_image == object_images['bush']
+                layer = game.TileLayer((ground_image, object_image), collidable)
                 self.tile.map[(x, y)] = layer
 
     def on_draw(self, surface):

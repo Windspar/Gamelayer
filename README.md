@@ -8,8 +8,7 @@ A pygame toolkit. Handles many different tools.
 * Has basic UI tools. Buttons, Labels, and TextLine.
 * Has a grid, timer, wordwrap, color shortcut, and extend color class.
 
-#### TODO ####
-* Finish tile map. Have to add collision.
+#### TODO ####.
 * Make more example.
 * Make a pip package.
 
