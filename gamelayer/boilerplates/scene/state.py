@@ -13,7 +13,7 @@ class State:
     def draw(self, surface):
         self.scene.on_draw(surface)
         if self.panel:
-            self.panel.on_draw(suface)
+            self.panel.on_draw(surface)
 
     def drop(self):
         self.timer.pause()
