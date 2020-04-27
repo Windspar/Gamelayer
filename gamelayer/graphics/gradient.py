@@ -1,6 +1,5 @@
-from pygame import Color, Surface, Vector3, surfarray, SRCALPHA
+from pygame import Color, Surface, Vector3, surfarray, SRCALPHA, BLEND_RGBA_MULT
 from pygame.transform import scale as image_scale
-import math
 
 
 class Gradient:
@@ -8,7 +7,17 @@ class Gradient:
         self.vertical = vertical
         self.surface = None
 
-    def apply_surface(self, surface):
+    def apply_surface_blend(self, surface, special_flags=BLEND_RGBA_MULT):
+        if self.surface is None:
+            return
+
+        size = surface.get_size()
+        gradient_surface = self.get_surface(size)
+        gradient_surface.blit(surface, (0, 0), special_flags=special_flags)
+
+        return gradient_surface
+
+    def apply_surface_alpha(self, surface):
         if self.surface is None:
             return
 
