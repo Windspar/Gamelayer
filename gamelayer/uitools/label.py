@@ -1,10 +1,10 @@
 from pygame import MOUSEMOTION, MOUSEBUTTONDOWN, Color
-from .uisprite import UISprite
+from .ui_base import UI_Base
 from ..graphics import Gradient
 
-class Label(UISprite):
+class Label(UI_Base):
     def __init__(self, text, font, color, position, anchor="topleft", *groups):
-        UISprite.__init__(self, (0, 0, 0, 0), position, anchor, *groups)
+        UI_Base.__init__(self, (0, 0, 0, 0), position, anchor, *groups)
         self._font = font
         self._text = text
         self._color = color
@@ -13,7 +13,7 @@ class Label(UISprite):
     def _render(self):
         if isinstance(self._color, Gradient):
             self.image = self._font.render(self._text, 1, Color('white'))
-            self.image = self._color.apply_surface(self.image)
+            self.image = self._color.apply_surface_blend(self.image)
         else:
             self.image = self._font.render(self._text, 1, self._color)
 
@@ -46,9 +46,9 @@ class Label(UISprite):
         self.rect = self.image.get_rect(**{self._anchor: self._position})
         self.apply_image()
 
-class ActionLabel(UISprite):
+class ActionLabel(UI_Base):
     def __init__(self, normal_label, hover_label, callback, user_data=None, *groups):
-        UISprite.__init__(self, (0, 0, 0, 0), (0, 0), "topleft", *groups)
+        UI_Base.__init__(self, (0, 0, 0, 0), (0, 0), "topleft", *groups)
         self.callback = callback
         self.toggle_label = None
         self.is_toggleable = False

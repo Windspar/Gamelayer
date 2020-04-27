@@ -19,7 +19,7 @@ class Renderer(Sprite):
 
     def build_image(self, base):
         self.image = base.copy()
-        self.tool.blit(self.image, self.tool.rect)
+        self.tool.draw_to(self.image, self.tool.rect)
         self.rect = self.tool.rect
         self.apply_image()
 

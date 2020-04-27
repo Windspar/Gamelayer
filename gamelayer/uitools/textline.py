@@ -1,12 +1,12 @@
 import string
 from pygame import KMOD_CTRL, Rect, KEYDOWN, MOUSEMOTION, MOUSEBUTTONDOWN
 from .label import Label
-from .uisprite import UISprite
+from .ui_base import UI_Base
 from .textline_core import *
 
-class TextLine(UISprite):
+class TextLine(UI_Base):
     def __init__(self, font, color, callback, rect, allowed_keys=None, *groups):
-        UISprite.__init__(self, rect, (0, 0), "topleft", *groups)
+        UI_Base.__init__(self, rect, (0, 0), "topleft", *groups)
         self.callback = callback
         self._left = 0
         self._right = 0
@@ -32,8 +32,8 @@ class TextLine(UISprite):
 
     def build_image(self, tool=None):
         self.image = self.build_surface()
-        self.label.blit(self.image, self.rect)
-        self.carrot.blit(self.image, self.rect)
+        self.label.draw_to(self.image, self.rect)
+        self.carrot.draw_to(self.image, self.rect)
         self.apply_image()
 
     def draw(self, surface):

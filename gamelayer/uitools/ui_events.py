@@ -1,6 +1,6 @@
 
 
-class UIEvents:
+class UI_Events:
     def __init__(self):
         self.events = {}
 

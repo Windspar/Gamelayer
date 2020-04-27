@@ -19,14 +19,14 @@ class Carrot(Sprite):
         self._enable = False
         self._callback = None
 
-    def blit(self, surface, rect):
-        x = self.rect.x - rect.x
-        y = self.rect.y - rect.y
-        surface.blit(self.image, (x, y))
-
     def draw(self, surface):
         if self._show:
             surface.blit(self.image, self.rect)
+
+    def draw_to(self, surface, rect):
+        x = self.rect.x - rect.x
+        y = self.rect.y - rect.y
+        surface.blit(self.image, (x, y))
 
     def enable(self, boolean):
         self._enable = boolean

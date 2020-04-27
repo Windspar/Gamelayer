@@ -4,7 +4,7 @@ import gamelayer as game
 class MainScene(game.Scene):
     def __init__(self, manager):
         game.Scene.__init__(self, manager)
-        self.ui_events = game.UIEvents()
+        self.ui_events = game.UI_Events()
         self.create_textbox()
 
     def on_draw(self, surface):

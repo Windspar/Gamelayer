@@ -8,7 +8,7 @@ class MainScene(game.Scene):
         game.Scene.__init__(self, manager)
         self.group_labels = Group()
         self.group_buttons = Group()
-        self.ui_events = game.UIEvents()
+        self.ui_events = game.UI_Events()
 
         self.font = pygame.font.Font(None, 28)
         position = self.state.manager.rect.right - 20, 20

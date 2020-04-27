@@ -1,11 +1,11 @@
 from pygame import MOUSEMOTION, MOUSEBUTTONDOWN, MOUSEBUTTONUP
 from .label import Label
 from .image import Image
-from .uisprite import UISprite
+from .ui_base import UI_Base
 
-class DraftButton(UISprite):
+class DraftButton(UI_Base):
     def __init__(self, rect, callback, user_data=None, togglebutton=False, *groups):
-        UISprite.__init__(self, rect, (0, 0), "topleft")
+        UI_Base.__init__(self, rect, (0, 0), "topleft")
         self.callback = callback
         self.user_data = user_data
         self.image = self.build_surface()
@@ -46,7 +46,7 @@ class Button(DraftButton):
 
     def build_image(self):
         surface = self.build_surface()
-        self.label.blit(surface, self.rect)
+        self.label.draw_to(surface, self.rect)
         self.image = surface
 
     def draw(self, surface):
