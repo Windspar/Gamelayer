@@ -9,7 +9,7 @@ class MainScene(game.Scene):
         self.load_images()
         rect = self.state.manager.rect
         player = self.characters["manBlue_stand"]
-        self.tile = game.Tile(32, 100, 100, rect, player, (50, 50))
+        self.tile = game.Tile(32, 100, 100, rect, player, (50, 50), True)
         self.build_world()
 
     def load_images(self):
