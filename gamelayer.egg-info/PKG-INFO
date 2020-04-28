@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: gamelayer
+Version: 0.1.0
+Summary: A pygame toolkit
+Home-page: https://github.com/Windspar/Gamelayer
+Author: Kevin Wolff
+License: UNKNOWN
+Description: GameLayer
+        =========
+        A pygame toolkit. Handles many different tools.
+        * Has two boiler plates.
+        * Has a few different image loaders
+        * Has gradient class.
+        * Has extend sprite class. Allow for quick rotation and movement.
+        * Has basic UI tools. Buttons, Labels, and TextLine.
+        * Has a grid, timer, wordwrap, color shortcut, and extend color class.
+        
+        #### TODO ####
+        * Make more example.
+        * Make a pip package.
+        
+        ## Requirements ##
+        * Made in linux (Debian Buster Distro)
+        * Made in python 3.7
+        * pygame 1.9.6
+        
+        ### Credit ###
+        * Images by kenney - https://kenney.nl/
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
