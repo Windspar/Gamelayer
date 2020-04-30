@@ -13,6 +13,7 @@ class SpriteSheet:
         else:
             self.sprite_sheet = self.sprite_sheet.convert()
 
+        self.sprite_sheet_original = self.sprite_sheet
         self.scale(scale_by)
 
     def __getitem__(self, key):
@@ -24,10 +25,11 @@ class SpriteSheet:
         surface.blit(self.sprite_sheet, rect)
 
     def scale(self, scale_by):
+        size = self.sprite_sheet.get_size()
         if scale_by != 1:
-            size = self.sprite_sheet.get_size()
             size = int(size[0] // scale_by), int(size[1] // scale_by)
-            self.sprite_sheet = image_scale(self.sprite_sheet, size)
-            width = size[0] // self.tilesize
-            height = size[1] // self.tilesize
-            self.grid = Grid((0, 0), (width, height), (self.tilesize, self.tilesize))
+            self.sprite_sheet = image_scale(self.sprite_sheet_original, size)
+
+        width = size[0] // self.tilesize
+        height = size[1] // self.tilesize
+        self.grid = Grid((0, 0), (width, height), (self.tilesize, self.tilesize))
