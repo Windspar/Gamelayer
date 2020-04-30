@@ -20,9 +20,9 @@ class SpriteSheet:
         rect = self.grid.get_rect(key)
         return self.sprite_sheet.subsurface(rect)
 
-    def blit_image(self, surface, key):
+    def blit_image(self, surface, key, position):
         rect = self.grid.get_rect(key)
-        surface.blit(self.sprite_sheet, rect)
+        surface.blit(self.sprite_sheet, position, rect)
 
     def scale(self, scale_by):
         size = self.sprite_sheet.get_size()
