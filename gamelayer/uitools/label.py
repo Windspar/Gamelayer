@@ -3,7 +3,7 @@ from .ui_base import UI_Base
 from ..graphics import Gradient
 
 class Label(UI_Base):
-    def __init__(self, text, font, color, position, anchor="topleft", *groups):
+    def __init__(self, text, font, color, position=(0, 0), anchor="topleft", *groups):
         UI_Base.__init__(self, (0, 0, 0, 0), position, anchor, *groups)
         self._font = font
         self._text = text
