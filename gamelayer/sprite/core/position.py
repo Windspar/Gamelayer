@@ -10,6 +10,9 @@ class AnchorPosition:
         self.sprite.rect = self.sprite.image.get_rect(**{self.anchor: self.position})
         self.sprite._center = Vector2(self.sprite.rect.center)
 
+    def apply_anchor(self, anchor):
+        setattr(self.sprite.rect, anchor, self.position)
+
     def set_position(self, position, anchor):
         if anchor:
             self.anchor = anchor

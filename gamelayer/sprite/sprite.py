@@ -1,5 +1,5 @@
 from pygame.sprite import Sprite as PygameSprite
-from pygame.transform import rotate as pygame_rotate
+from pygame.transform import rotate as pygame_rotate, scale as pygame_scale
 from pygame import Vector2
 from .core import *
 from .movement import *
@@ -64,6 +64,13 @@ class Sprite(PygameSprite):
 
     def set_position(self, position, anchor=None):
         self._position.set_position(position, anchor)
+
+    def scale(self, size, anchor=None):
+        self.image = pygame_scale(self._original_image, size)
+        if anchor:
+            self.apply_anchor(anchor)
+        else:
+            self.apply()
 
     def update(self, delta, keys_pressed):
         if self.keys:
