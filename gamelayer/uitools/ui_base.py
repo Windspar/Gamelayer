@@ -38,12 +38,6 @@ class UI_Base(Sprite):
             y = self.rect.y - rect.y
             surface.blit(self.image, (x, y))
 
-    def get_position_from_rect(self, rect=None):
-        if rect:
-            self._position = getattr(rect, self._anchor)
-        else:
-            self._position = getattr(self.rect, self._anchor)
-
     def on_mousemotion(self, event):
         self._hover = self.rect.collidepoint(event.pos)
         self.apply_image()
@@ -57,6 +51,15 @@ class UI_Base(Sprite):
             self._anchor = anchor
 
         setattr(self.rect, self._anchor, self._position)
+
+    def set_position_from_rect(self, rect=None, anchor=None):
+        if anchor:
+            self._anchor = anchor
+
+        if rect:
+            self._position = getattr(rect, self._anchor)
+        else:
+            self._position = getattr(self.rect, self._anchor)
 
     def set_toggle(self, boolean=True):
         self._toggle = boolean
